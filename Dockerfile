@@ -1,6 +1,7 @@
-From node:alpine
-LABEL org.opencontainers.image.source https://github.com/mrpagex/conversao-temperatura
+FROM node:18.11.0
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
 EXPOSE 8080
-COPY . /src
-WORKDIR /src
-CMD node convert.js
+CMD ["node", "server.js"]
